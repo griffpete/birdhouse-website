@@ -139,7 +139,7 @@ module.exports = async (req, res) => {
     body.set('xnQsjsdp', xnQsjsdp);
     body.set('xmIwtLD', xmIwtLD);
     body.set('actionType', process.env.ZOHO_WEBFORM_ACTIONTYPE || 'TGVhZHM=');
-    body.set('returnURL', 'https://example.com/thanks');
+    body.set('returnURL', 'https://www.birdhousedogco.com/book');
     for (const [key, name] of Object.entries(map)) {
       const v = lead[key];
       if (!name || v === undefined || v === '') continue;
@@ -154,8 +154,20 @@ module.exports = async (req, res) => {
         body: body.toString(),
         redirect: 'manual'
       });
-      // Zoho answers a web-to-lead post with a redirect to returnURL on success.
-      results.zoho = r.status >= 200 && r.status < 400 ? 'sent' : `http ${r.status}`;
+      // Zoho can return HTTP 200 for errors too. Check its submission result.
+      if (r.status >= 300 && r.status < 400) {
+        results.zoho = r.headers.get('location') === body.get('returnURL') ? 'sent' : 'unexpected redirect';
+      } else if (r.ok) {
+        let result;
+        try { result = await r.json(); } catch (e) { /* unrecognized response */ }
+        const acceptedActions = ['Splash Message', 'thankyou_page', 'redirect_url', 'parent_redirect'];
+        const accepted = result && acceptedActions.includes(result.actionsubmit)
+          && result.success !== false && result.success !== 'false'
+          && result.invalidCaptcha !== true && result.invalidCaptcha !== 'true';
+        results.zoho = accepted ? 'sent' : 'submission not accepted';
+      } else {
+        results.zoho = `http ${r.status}`;
+      }
     } catch (e) {
       results.zoho = 'error: ' + e.message;
     }

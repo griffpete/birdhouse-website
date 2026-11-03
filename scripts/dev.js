@@ -26,6 +26,8 @@ try {
 } catch (e) { /* no .env.local, fine */ }
 
 if (process.env.FAKE_ZOHO) {
+  delete process.env.ZOHO_WEBFORM_XNQSJSDP;
+  delete process.env.ZOHO_WEBFORM_XMIWTLD;
   // Point the lead function at a local echo endpoint so the whole submit path can be exercised.
   process.env.LEAD_WEBHOOK_URL = `http://127.0.0.1:${PORT}/__fake-webhook`;
 }

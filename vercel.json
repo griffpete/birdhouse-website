@@ -5,39 +5,99 @@
   "redirects": [
     {
       "source": "/:path(.*)",
-      "has": [{ "type": "host", "value": "(www\\.)?GROOMING-DOMAIN.com" }],
-      "destination": "https://MAIN-DOMAIN.com/grooming",
+      "has": [
+        {
+          "type": "host",
+          "value": "(www\\.)?birdhousegrooming\\.com"
+        }
+      ],
+      "destination": "https://www.birdhousedogco.com/grooming",
       "permanent": true
     },
     {
       "source": "/:path(.*)",
-      "has": [{ "type": "host", "value": "(www\\.)?TRAINING-DOMAIN.com" }],
-      "destination": "https://MAIN-DOMAIN.com/training",
+      "has": [
+        {
+          "type": "host",
+          "value": "(www\\.)?birdhousetraining\\.com"
+        }
+      ],
+      "destination": "https://www.birdhousedogco.com/training",
       "permanent": true
     },
     {
       "source": "/:path(.*)",
-      "has": [{ "type": "host", "value": "(www\\.)?SECOND-MAIN-DOMAIN.com" }],
-      "destination": "https://MAIN-DOMAIN.com/:path",
+      "has": [
+        {
+          "type": "host",
+          "value": "(www\\.)?birdhousedog\\.com"
+        }
+      ],
+      "destination": "https://www.birdhousedogco.com/:path",
       "permanent": true
     },
-    { "source": "/index.html", "destination": "/", "permanent": true },
-    { "source": "/grooming.html", "destination": "/grooming", "permanent": true },
-    { "source": "/training.html", "destination": "/training", "permanent": true },
-    { "source": "/about.html", "destination": "/about", "permanent": true },
-    { "source": "/book.html", "destination": "/book", "permanent": true }
+    {
+      "source": "/:path(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "birdhousedogco.com"
+        }
+      ],
+      "destination": "https://www.birdhousedogco.com/:path",
+      "permanent": true
+    },
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/grooming.html",
+      "destination": "/grooming",
+      "permanent": true
+    },
+    {
+      "source": "/training.html",
+      "destination": "/training",
+      "permanent": true
+    },
+    {
+      "source": "/about.html",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/book.html",
+      "destination": "/book",
+      "permanent": true
+    }
   ],
   "headers": [
     {
       "source": "/(img|fonts)/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
     },
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
       ]
     }
   ]

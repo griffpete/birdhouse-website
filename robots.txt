@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-Sitemap: https://SITE_URL/sitemap.xml
+Sitemap: https://www.birdhousedogco.com/sitemap.xml

@@ -56,18 +56,16 @@ Feeds refresh on SnapWidget's side (every 5 minutes on paid plans, every 15 minu
 
 ## Domains
 
-`vercel.json` holds the redirects. Replace the placeholders:
+Primary site: `https://www.birdhousedogco.com`.
 
-- `MAIN-DOMAIN.com` → the primary domain (canonical site).
-- `GROOMING-DOMAIN.com` → redirects every path to `/grooming` on the main domain.
-- `TRAINING-DOMAIN.com` → redirects to `/training`.
-- `SECOND-MAIN-DOMAIN.com` → redirects to the same path on the main domain.
+- `birdhousegrooming.com` and `www.birdhousegrooming.com` redirect to the primary site's `/grooming` page.
+- `birdhousetraining.com` and `www.birdhousetraining.com` redirect to `/training`.
+- `birdhousedog.com` and `www.birdhousedog.com` redirect to the primary site, preserving the path.
+- `birdhousedogco.com` redirects to `www.birdhousedogco.com`, preserving the path.
 
-All four domains are added to the Vercel project (Settings → Domains); the redirects decide where each one lands. Also replace `https://SITE_URL` in the HTML heads, `robots.txt` and `sitemap.xml` with the main domain:
+Add all eight hostnames to the same Vercel project and use its provided DNS records. The routing rules are in `vercel.json`; canonical metadata and the sitemap use the primary domain.
 
-```bash
-grep -rl "SITE_URL" --include=*.html --include=*.txt --include=*.xml . | xargs sed -i '' 's#https://SITE_URL#https://MAIN-DOMAIN.com#g'
-```
+Zoho Website Booking's form locations include all eight HTTPS hostnames plus `https://birdhouse-website.vercel.app`. The form tokens were refreshed locally from the confirmed Birdhouse account on November 3, 2026. Vercel must use these current values; never commit `.env.local`.
 
 ## Editing content
 

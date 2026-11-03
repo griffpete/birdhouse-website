@@ -1,0 +1,9 @@
+{
+  "name": "Birdhouse Dog Co.",
+  "short_name": "Birdhouse",
+  "icons": [{ "src": "/img/logo-brand.jpg", "type": "image/jpeg" }],
+  "theme_color": "#FBF8F3",
+  "background_color": "#005F8F",
+  "display": "browser",
+  "start_url": "/"
+}

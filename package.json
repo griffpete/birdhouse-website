@@ -1,0 +1,13 @@
+{
+  "name": "birdhouse-dog-co",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Birdhouse Dog Co. website — static pages plus one Vercel function that sends bookings to Zoho CRM.",
+  "scripts": {
+    "dev": "FAKE_ZOHO=1 node scripts/dev.js",
+    "dev:real": "node scripts/dev.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

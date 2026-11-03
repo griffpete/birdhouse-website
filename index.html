@@ -25,29 +25,94 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "additionalType": ["https://schema.org/PetStore"],
-  "name": "Birdhouse Dog Co.",
-  "description": "One-on-one dog grooming and dog training in Ivins, Utah, serving St. George and Southern Utah.",
-  "url": "https://www.birdhousedogco.com/",
-  "telephone": "+1-916-513-5280",
-  "email": "birdhousedogco@gmail.com",
-  "image": "https://www.birdhousedogco.com/img/logo-brand.jpg",
-  "priceRange": "$$",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "740 S Red Mountain Blvd #21",
-    "addressLocality": "Ivins",
-    "addressRegion": "UT",
-    "postalCode": "84738",
-    "addressCountry": "US"
-  },
-  "areaServed": ["Ivins", "St. George", "Santa Clara", "Washington", "Hurricane", "Cedar City", "Southern Utah"],
-  "founder": { "@type": "Person", "name": "Dani Bird" },
-  "sameAs": ["https://www.instagram.com/birdhousedogrooming/", "https://www.tiktok.com/@danigal_bird"],
-  "makesOffer": [
-    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Dog grooming" }, "priceSpecification": { "@type": "PriceSpecification", "minPrice": 39, "priceCurrency": "USD" } },
-    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Private dog training" }, "description": "Quoted after a free in-home consult" }
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "name": "Birdhouse Dog Co.",
+      "description": "One-on-one dog grooming and dog training in Ivins, Utah, serving St. George and Southern Utah.",
+      "url": "https://www.birdhousedogco.com/",
+      "telephone": "+1-916-513-5280",
+      "email": "birdhousedogco@gmail.com",
+      "image": "https://www.birdhousedogco.com/img/logo-brand.jpg",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "740 S Red Mountain Blvd #21",
+        "addressLocality": "Ivins",
+        "addressRegion": "UT",
+        "postalCode": "84738",
+        "addressCountry": "US"
+      },
+      "areaServed": [
+        "Ivins",
+        "St. George",
+        "Santa Clara",
+        "Washington",
+        "Hurricane",
+        "Cedar City",
+        "Southern Utah"
+      ],
+      "founder": {
+        "@type": "Person",
+        "@id": "https://www.birdhousedogco.com/about#dani-bird",
+        "name": "Dani Bird",
+        "url": "https://www.birdhousedogco.com/about"
+      },
+      "sameAs": [
+        "https://www.instagram.com/birdhousedogrooming/",
+        "https://www.tiktok.com/@danigal_bird"
+      ],
+      "makesOffer": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Dog grooming",
+            "@id": "https://www.birdhousedogco.com/grooming#service"
+          },
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "minPrice": 39,
+            "priceCurrency": "USD"
+          },
+          "url": "https://www.birdhousedogco.com/grooming"
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Private dog training",
+            "@id": "https://www.birdhousedogco.com/training#service"
+          },
+          "description": "Quoted after a free in-home consult",
+          "url": "https://www.birdhousedogco.com/training"
+        }
+      ],
+      "@id": "https://www.birdhousedogco.com/#business",
+      "logo": "https://www.birdhousedogco.com/img/logo-brand.jpg"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.birdhousedogco.com/#website",
+      "url": "https://www.birdhousedogco.com/",
+      "name": "Birdhouse Dog Co.",
+      "publisher": {
+        "@id": "https://www.birdhousedogco.com/#business"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://www.birdhousedogco.com/#webpage",
+      "url": "https://www.birdhousedogco.com/",
+      "name": "Dog Grooming & Training in Ivins, Utah | Birdhouse Dog Co.",
+      "isPartOf": {
+        "@id": "https://www.birdhousedogco.com/#website"
+      },
+      "about": {
+        "@id": "https://www.birdhousedogco.com/#business"
+      },
+      "inLanguage": "en-US"
+    }
   ]
 }
 </script>

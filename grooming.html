@@ -27,17 +27,91 @@
   "@type": "Service",
   "serviceType": "Dog grooming",
   "name": "Dog grooming in Ivins, Utah",
-  "provider": { "@type": "LocalBusiness", "name": "Birdhouse Dog Co.", "telephone": "+1-916-513-5280", "address": { "@type": "PostalAddress", "streetAddress": "740 S Red Mountain Blvd #21", "addressLocality": "Ivins", "addressRegion": "UT", "postalCode": "84738", "addressCountry": "US" } },
-  "areaServed": ["Ivins", "St. George", "Santa Clara", "Washington", "Hurricane", "Southern Utah"],
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Birdhouse Dog Co.",
+    "telephone": "+1-916-513-5280",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "740 S Red Mountain Blvd #21",
+      "addressLocality": "Ivins",
+      "addressRegion": "UT",
+      "postalCode": "84738",
+      "addressCountry": "US"
+    },
+    "@id": "https://www.birdhousedogco.com/#business",
+    "url": "https://www.birdhousedogco.com/"
+  },
+  "areaServed": [
+    "Ivins",
+    "St. George",
+    "Santa Clara",
+    "Washington",
+    "Hurricane",
+    "Southern Utah"
+  ],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
     "name": "Grooming services",
     "itemListElement": [
-      { "@type": "Offer", "name": "Full groom", "priceSpecification": { "@type": "PriceSpecification", "minPrice": 79, "maxPrice": 129, "priceCurrency": "USD" } },
-      { "@type": "Offer", "name": "Bath & trim", "priceSpecification": { "@type": "PriceSpecification", "minPrice": 49, "maxPrice": 69, "priceCurrency": "USD" } },
-      { "@type": "Offer", "name": "Bath & brush", "priceSpecification": { "@type": "PriceSpecification", "minPrice": 39, "maxPrice": 59, "priceCurrency": "USD" } }
+      {
+        "@type": "Offer",
+        "name": "Full groom",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "minPrice": 79,
+          "maxPrice": 129,
+          "priceCurrency": "USD"
+        },
+        "url": "https://www.birdhousedogco.com/grooming#prices",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Full groom",
+          "provider": {
+            "@id": "https://www.birdhousedogco.com/#business"
+          }
+        }
+      },
+      {
+        "@type": "Offer",
+        "name": "Bath & trim",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "minPrice": 49,
+          "maxPrice": 69,
+          "priceCurrency": "USD"
+        },
+        "url": "https://www.birdhousedogco.com/grooming#prices",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Bath & trim",
+          "provider": {
+            "@id": "https://www.birdhousedogco.com/#business"
+          }
+        }
+      },
+      {
+        "@type": "Offer",
+        "name": "Bath & brush",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "minPrice": 39,
+          "maxPrice": 59,
+          "priceCurrency": "USD"
+        },
+        "url": "https://www.birdhousedogco.com/grooming#prices",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Bath & brush",
+          "provider": {
+            "@id": "https://www.birdhousedogco.com/#business"
+          }
+        }
+      }
     ]
-  }
+  },
+  "@id": "https://www.birdhousedogco.com/grooming#service",
+  "url": "https://www.birdhousedogco.com/grooming"
 }
 </script>
 <script id="faq-schema" type="application/ld+json">
@@ -58,7 +132,7 @@
       "name": "How much does dog grooming cost at Birdhouse Dog Co.?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Grooming prices are based on your dog’s weight: full grooms are $79–$129, bath and trim appointments are $49–$69, and bath and brush appointments are $39–$59. Matting, heavy shedding, and extra handling time can affect the final quote. See the package prices by weight; We confirm the quote when we meet your dog."
+        "text": "Grooming prices are based on your dog’s weight: full grooms are $79–$129, bath and trim appointments are $49–$69, and bath and brush appointments are $39–$59. Matting, heavy shedding, and extra handling time can affect the final quote. See the package prices by weight; we confirm the quote when we meet your dog."
       }
     },
     {
@@ -339,7 +413,7 @@
       </details>
       <details>
         <summary>How much does dog grooming cost at Birdhouse Dog Co.?</summary>
-        <p>Grooming prices are based on your dog’s weight: full grooms are $79–$129, bath and trim appointments are $49–$69, and bath and brush appointments are $39–$59. Matting, heavy shedding, and extra handling time can affect the final quote. See the <a href="#prices">package prices by weight</a>; We confirm the quote when we meet your dog.</p>
+        <p>Grooming prices are based on your dog’s weight: full grooms are $79–$129, bath and trim appointments are $49–$69, and bath and brush appointments are $39–$59. Matting, heavy shedding, and extra handling time can affect the final quote. See the <a href="#prices">package prices by weight</a>; we confirm the quote when we meet your dog.</p>
       </details>
       <details>
         <summary>What is included in a full groom?</summary>

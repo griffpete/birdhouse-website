@@ -27,16 +27,64 @@
   "@type": "Service",
   "serviceType": "Dog training",
   "name": "Dog training in Southern Utah",
-  "provider": { "@type": "LocalBusiness", "name": "Birdhouse Dog Co.", "telephone": "+1-916-513-5280", "address": { "@type": "PostalAddress", "streetAddress": "740 S Red Mountain Blvd #21", "addressLocality": "Ivins", "addressRegion": "UT", "postalCode": "84738", "addressCountry": "US" } },
-  "areaServed": ["Ivins", "St. George", "Santa Clara", "Washington", "Hurricane", "Cedar City", "Southern Utah"],
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Birdhouse Dog Co.",
+    "telephone": "+1-916-513-5280",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "740 S Red Mountain Blvd #21",
+      "addressLocality": "Ivins",
+      "addressRegion": "UT",
+      "postalCode": "84738",
+      "addressCountry": "US"
+    },
+    "@id": "https://www.birdhousedogco.com/#business",
+    "url": "https://www.birdhousedogco.com/"
+  },
+  "areaServed": [
+    "Ivins",
+    "St. George",
+    "Santa Clara",
+    "Washington",
+    "Hurricane",
+    "Cedar City",
+    "Southern Utah"
+  ],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
     "name": "Training programs",
     "itemListElement": [
-      { "@type": "Offer", "name": "Private coaching", "description": "Quoted after a free in-home consult" },
-      { "@type": "Offer", "name": "Boot camp, 5-week stay-and-train program", "description": "Quoted after a free in-home consult" }
+      {
+        "@type": "Offer",
+        "name": "Private coaching",
+        "description": "Quoted after a free in-home consult",
+        "url": "https://www.birdhousedogco.com/training#programs",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Private coaching",
+          "provider": {
+            "@id": "https://www.birdhousedogco.com/#business"
+          }
+        }
+      },
+      {
+        "@type": "Offer",
+        "name": "Boot camp, 5-week stay-and-train program",
+        "description": "Quoted after a free in-home consult",
+        "url": "https://www.birdhousedogco.com/training#programs",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Boot camp, 5-week stay-and-train program",
+          "provider": {
+            "@id": "https://www.birdhousedogco.com/#business"
+          }
+        }
+      }
     ]
-  }
+  },
+  "@id": "https://www.birdhousedogco.com/training#service",
+  "url": "https://www.birdhousedogco.com/training"
 }
 </script>
 <script id="faq-schema" type="application/ld+json">

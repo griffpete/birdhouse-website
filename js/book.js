@@ -21,13 +21,13 @@
       doneTitle: 'Groom request sent!',
       doneBody: 'We will text you to lock in a time that gives your dog the room they need. We will send the drop-off address in Ivins when we confirm.' },
     training: { name: 'Training', color: '#ABA53F', zoho: ['Dog Training'],
-      desc: 'Private coaching or boot camp. Starts with a free consult.',
+      desc: 'Private coaching or boot camp. Starts with a consult.',
       doneTitle: 'Consult requested!',
-      doneBody: 'We will reach out to set up your free consult. No commitment and no sales pitch, just a conversation about your dog.' },
+      doneBody: 'We will reach out to set up your consult. No commitment and no sales pitch, just a conversation about your dog.' },
     both: { name: 'Grooming & training', color: '#FFCF70', zoho: ['Grooming', 'Dog Training'],
       desc: 'Book a groom and start a training consult in one go.',
       doneTitle: 'Request sent!',
-      doneBody: 'We will text you to set up the groom and the free training consult. We will follow up to confirm the details.' }
+      doneBody: 'We will text you to set up the groom and the training consult. We will follow up to confirm the details.' }
   };
 
   var STEPS = [

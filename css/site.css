@@ -314,10 +314,27 @@ button { font: inherit; color: inherit; }
 .duo > .photo { aspect-ratio: 4 / 5; width: 100%; height: auto; }
 .duo__stack { display: grid; gap: 20px; grid-template-rows: auto minmax(0, 1fr); min-width: 0; }
 .duo__stack .photo { aspect-ratio: auto; height: 100%; min-height: 0; }
+/* Rotating training photos (js/rotator.js). The slots have fixed shapes and the photos sit
+   inside them absolutely, so changing photos never changes the page height or moves the scroll. */
+[data-rotator] .photo > picture { display: block; position: absolute; inset: 0; }
+.duo[data-rotator] .duo__stack { grid-template-rows: auto auto; }
+.duo[data-rotator] .duo__stack .photo { aspect-ratio: 4 / 5; height: auto; }
+.rotator__flyer { position: absolute; z-index: 3; pointer-events: none; transform-origin: 0 0; will-change: transform; }
+.rotator__flyer > div { position: absolute; inset: 0; will-change: clip-path; }
+.rotator__flyer-shadow { background: var(--ink); transform: translate(5px, 5px); }
+.rotator__flyer-frame { background: var(--ink); }
+.rotator__flyer > .rotator__flyer-photo { inset: 1.5px; overflow: hidden; background: var(--line); }
+.rotator__flyer-photo picture { display: block; width: 100%; height: 100%; }
+.rotator__flyer-photo img { width: 100%; height: 100%; object-fit: cover; }
+/* Every version of the card text shares one cell, so the card keeps the height of the longest. */
+.rotator__card { display: grid; transition: background-color .8s ease, color .8s ease; }
+.rotator__card .sub { color: inherit; }
+.rotator__copy { grid-area: 1 / 1; opacity: 0; visibility: hidden; transition: opacity .4s ease, visibility 0s linear .4s; }
+.rotator__copy.is-active { opacity: 1; visibility: visible; transition: opacity .5s ease .35s, visibility 0s linear 0s; }
 @media (max-width: 760px) {
   .duo { grid-template-columns: 1fr; }
   .duo__stack { grid-template-rows: auto auto; }
-  .duo__stack .photo { aspect-ratio: 4 / 3; height: auto; }
+  .duo__stack .photo, .duo[data-rotator] .duo__stack .photo { aspect-ratio: 4 / 3; height: auto; }
 }
 
 /* Before & after */

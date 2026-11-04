@@ -10,6 +10,7 @@ Static site for Birdhouse Dog Co. (dog grooming and training in Ivins, Utah), ho
 | `css/site.css` | All styles. Colors and type live at the top as CSS variables. |
 | `js/site.js` | Intro reveal, mobile menu, hero word swap, shared lead sender. |
 | `js/book.js` | The booking wizard (grooming / training / both). Step content is the `SERVICES` object at the top. Runs full-page on `/book` and embedded in the home page's yellow contact card. |
+| `js/rotator.js` | Rotating photos at the top of the training page. To add a photo, put another `<picture>` in the `<template data-rotator-extra>` block in `training.html`. |
 | `api/lead.js` | Vercel serverless function. Receives a booking or message and forwards it to Zoho CRM as a Lead. |
 | `img/` | Optimized photos (jpg + webp, 900 and 1600 px). Originals stay in `assets/` and are not deployed. |
 | `fonts/` | Archivo and Bagel Fat One (latin subsets). |

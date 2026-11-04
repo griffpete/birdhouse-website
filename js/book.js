@@ -1,11 +1,16 @@
 /* Birdhouse Dog Co. — booking wizard.
    Collects exactly the fields on the Zoho CRM "Birdhouse Dog Co - Lead Layout", one screen at a time,
-   then posts to /api/lead, which forwards the lead to Zoho. No payment is taken online. */
+   then posts to /api/lead, which forwards the lead to Zoho. No payment is taken online.
+   Runs full-page on /book, and embedded in the home page contact card (data-wizard-embed). */
 (function () {
   'use strict';
 
   var mount = document.getElementById('wizard');
   if (!mount) return;
+  // Embedded copies leave the URL alone, use h3 headings and scroll only within their section.
+  var embedded = mount.hasAttribute('data-wizard-embed');
+  var heading = embedded ? 'h3' : 'h1';
+  function setUrl(url) { if (!embedded) history.replaceState(null, '', url); }
 
   var PHONE = '(916) 513-5280';
 
@@ -14,7 +19,7 @@
     grooming: { name: 'Grooming', color: '#005F8F', zoho: ['Grooming'],
       desc: 'Full groom, bath & trim or bath & brush. One dog at a time.',
       doneTitle: 'Groom request sent!',
-      doneBody: 'We will text you to lock in a time that gives your dog the room they need. Drop-off is at 740 S Red Mountain Blvd #21 in Ivins.' },
+      doneBody: 'We will text you to lock in a time that gives your dog the room they need. We will send the drop-off address in Ivins when we confirm.' },
     training: { name: 'Training', color: '#ABA53F', zoho: ['Dog Training'],
       desc: 'Private coaching or boot camp. Starts with a free consult.',
       doneTitle: 'Consult requested!',
@@ -57,10 +62,12 @@
   var state = { service: null, step: 0, answers: {}, done: false, error: '', sending: false };
   var busy = false;
 
-  var params = new URLSearchParams(location.search);
-  var preset = params.get('service');
-  if (!preset && /^#\/book\/([a-z]+)/.test(location.hash)) preset = RegExp.$1; // old hash-style links
-  if (preset && SERVICES[preset]) { state.service = preset; state.step = 1; }
+  if (!embedded) {
+    var params = new URLSearchParams(location.search);
+    var preset = params.get('service');
+    if (!preset && /^#\/book\/([a-z]+)/.test(location.hash)) preset = RegExp.$1; // old hash-style links
+    if (preset && SERVICES[preset]) { state.service = preset; state.step = 1; }
+  }
 
   function validate(st) {
     var a = state.answers;
@@ -111,7 +118,7 @@
     pill = el('div', { class: 'wizard__pill' });
     count = el('div', { class: 'wizard__count' });
     bar = el('div');
-    title = el('h1', { class: 'wizard__title' });
+    title = el(heading, { class: 'wizard__title' });
     sub = el('p', { class: 'wizard__sub' });
     content = el('div');
     errBox = el('div', { class: 'form-error', role: 'alert', 'aria-live': 'polite' });
@@ -123,7 +130,7 @@
       el('div', { class: 'wizard__top' }, [pill, count]),
       el('div', { class: 'wizard__bar' }, [bar]),
       card,
-      el('p', { class: 'wizard__foot', html: 'Rather talk it through? Text or call us at <a href="tel:9165135280">' + PHONE + '</a>.' })
+      embedded ? null : el('p', { class: 'wizard__foot', html: 'Rather talk it through? Text or call us at <a href="tel:9165135280">' + PHONE + '</a>.' })
     ]);
     mount.appendChild(shell);
   }
@@ -133,13 +140,13 @@
     mount.innerHTML = '';
     var box = el('div', { class: 'wizard__done' }, [
       el('div', { class: 'wizard__done-mark', text: '✓', 'aria-hidden': 'true' }),
-      el('h1', { text: svc.doneTitle }),
+      el(heading, { text: svc.doneTitle }),
       el('p', { text: svc.doneBody }),
       el('div', { class: 'btn-row btn-row--center' }, [
-        el('a', { href: '/', class: 'btn btn--ink', text: 'Back to home' }),
+        embedded ? null : el('a', { href: '/', class: 'btn btn--ink', text: 'Back to home' }),
         el('button', { type: 'button', class: 'btn', text: 'Book something else', onclick: function () {
           state = { service: null, step: 0, answers: {}, done: false, error: '', sending: false };
-          history.replaceState(null, '', '/book');
+          setUrl('/book');
           buildShell(); render();
         } })
       ])
@@ -147,7 +154,8 @@
     box.style.setProperty('--accent', svc.color);
     box.style.setProperty('--accent-ink', svc.color === '#005F8F' ? 'var(--cream)' : 'var(--ink)');
     mount.appendChild(box);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (embedded) mount.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    else window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   function render() {
@@ -179,7 +187,7 @@
         var s = SERVICES[k];
         var b = optionButton(s.name, s.desc, state.service === k, false, function () {
           state.service = k; state.error = '';
-          history.replaceState(null, '', '/book?service=' + k);
+          setUrl('/book?service=' + k);
           render();
           setTimeout(function () { go(1); }, 260);
         });

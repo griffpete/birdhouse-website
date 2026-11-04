@@ -97,7 +97,7 @@ module.exports = async (req, res) => {
     return res.end(JSON.stringify({ ok: true }));
   }
 
-  // The wizard sends firstName/lastName; the home-page contact form sends one "yourName".
+  // The wizard sends firstName/lastName; a single "yourName" is still accepted as a fallback.
   let first = clean(p.firstName, 60), last = clean(p.lastName, 60);
   if (!last) { const n = splitName(p.yourName); first = first || n.first; last = n.last; }
   const phone = clean(p.phone, 40);

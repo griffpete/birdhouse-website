@@ -128,51 +128,9 @@
       swap.style.color = words[i].color;
     }, 2600);
   }
-
-  /* ---------- Contact form (home page) ---------- */
-  var form = document.querySelector('[data-contact-form]');
-  if (form) {
-    var status = form.querySelector('[data-status]');
-    var button = form.querySelector('button[type="submit"]');
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var data = {};
-      new FormData(form).forEach(function (v, k) { data[k] = v; });
-      if (!String(data.yourName || '').trim() || !String(data.contact || '').trim()) {
-        status.textContent = 'Please add your name and a phone number or email so we can reply.';
-        status.className = 'form-error';
-        return;
-      }
-      var looksLikeEmail = /@/.test(data.contact);
-      var payload = {
-        service: data.need || 'Message',
-        yourName: data.yourName,
-        dogName: data.dogName,
-        phone: looksLikeEmail ? '' : data.contact,
-        email: looksLikeEmail ? data.contact : '',
-        dogNotes: data.message,
-        website: data.website,
-        source: 'Contact form'
-      };
-      button.disabled = true;
-      button.textContent = 'Sending…';
-      status.textContent = '';
-      window.BH.sendLead(payload).then(function () {
-        form.reset();
-        button.textContent = 'Sent — we will reply soon';
-        status.textContent = 'Got it. We will follow up about your dog and the next steps.';
-        status.className = 'form-ok';
-      }).catch(function () {
-        button.disabled = false;
-        button.textContent = 'Send it';
-        status.textContent = 'That didn’t go through. Text or call us at (916) 513-5280 and we will help you arrange an appointment.';
-        status.className = 'form-error';
-      });
-    });
-  }
 })();
 
-/* Shared lead sender used by the contact form and the booking wizard. */
+/* Shared lead sender used by the booking wizard. */
 window.BH = window.BH || {};
 window.BH.sendLead = function (payload) {
   payload = Object.assign({ page: location.pathname, submittedAt: new Date().toISOString() }, payload);

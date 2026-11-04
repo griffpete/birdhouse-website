@@ -8,8 +8,8 @@ Static site for Birdhouse Dog Co. (dog grooming and training in Ivins, Utah), ho
 | --- | --- |
 | `index.html`, `grooming.html`, `training.html`, `about.html`, `book.html` | The five pages. Vercel serves them at `/`, `/grooming`, `/training`, `/about`, `/book` (clean URLs). |
 | `css/site.css` | All styles. Colors and type live at the top as CSS variables. |
-| `js/site.js` | Intro reveal, mobile menu, hero word swap, home-page contact form. |
-| `js/book.js` | The booking wizard (grooming / training / both). Step content is the `SERVICES` object at the top. |
+| `js/site.js` | Intro reveal, mobile menu, hero word swap, shared lead sender. |
+| `js/book.js` | The booking wizard (grooming / training / both). Step content is the `SERVICES` object at the top. Runs full-page on `/book` and embedded in the home page's yellow contact card. |
 | `api/lead.js` | Vercel serverless function. Receives a booking or message and forwards it to Zoho CRM as a Lead. |
 | `img/` | Optimized photos (jpg + webp, 900 and 1600 px). Originals stay in `assets/` and are not deployed. |
 | `fonts/` | Archivo and Bagel Fat One (latin subsets). |
@@ -26,7 +26,7 @@ Opens on http://localhost:4321 with clean URLs and the `/api/lead` function. In 
 
 ## Zoho CRM hookup
 
-The site never talks to Zoho from the browser. The wizard and contact form POST JSON to `/api/lead`, and that function posts to the Zoho **Web-to-Lead** form named **Website Booking** (Birdhouse Zoho CRM → Setup → Channels → Webforms, Leads module, "Birdhouse Dog Co - Lead Layout"). Each wizard answer lands in its own Lead field; the field names are in `api/lead.js`.
+The site never talks to Zoho from the browser. The booking wizard POSTs JSON to `/api/lead`, and that function posts to the Zoho **Web-to-Lead** form named **Website Booking** (Birdhouse Zoho CRM → Setup → Channels → Webforms, Leads module, "Birdhouse Dog Co - Lead Layout"). Each wizard answer lands in its own Lead field; the field names are in `api/lead.js`.
 
 **Vercel setup (one time):** Project → Settings → Environment Variables, add these for Production (and Preview if you want test deploys to send real leads):
 
@@ -41,7 +41,7 @@ Optional extras: `LEAD_WEBHOOK_URL` also sends every lead as JSON to a Zapier/Ma
 
 **Local testing:** `npm run dev` runs in fake mode (leads print to the terminal). `npm run dev:real` reads `.env.local` and sends real leads to Zoho.
 
-Notes: the Lead layout has no Description field, so the home-page contact form's free-text message is not stored in Zoho yet (add Description to the layout and to the webform if you want it). Zoho's "Notify Leads Owner" is on, so Dani gets an email for each new lead. Duplicate emails are routed to Zoho's approval queue (Leads → Actions → Approve Leads) rather than silently merged.
+Notes: Zoho's "Notify Leads Owner" is on, so Dani gets an email for each new lead. Duplicate emails are routed to Zoho's approval queue (Leads → Actions → Approve Leads) rather than silently merged.
 
 ## Instagram and TikTok feeds (SnapWidget)
 
@@ -71,4 +71,4 @@ Zoho Website Booking's form locations include all eight HTTPS hostnames plus `ht
 
 - Prices: `grooming.html` (`#prices`), `training.html` (`#programs`), and the summary on `index.html` (`#pricing`). The wizard's add-on prices are in `js/book.js`.
 - Photos: drop a new original in `assets/`, then resize it into `img/` at 900 and 1600 px wide (jpg + webp) and reference it with a `<picture>` block like the existing ones.
-- Phone, email and address appear in each page's footer and in `index.html`'s contact section and JSON-LD.
+- Phone and email appear in each page's footer and in `index.html`'s contact section. Instagram and TikTok links are in each footer and in `index.html`'s JSON-LD (`sameAs`). The street address is intentionally left off the site; only the city (Ivins, UT) is in the JSON-LD.

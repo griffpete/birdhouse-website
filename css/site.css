@@ -67,7 +67,8 @@ body {
   margin: 0;
   font-family: var(--font);
   color: var(--ink);
-  background: var(--cream);
+  /* Faint cartoon dog-bone wallpaper so cards and photos stand off the page. */
+  background: var(--cream) url("../img/bone-pattern.svg") 0 0 / 480px 480px repeat;
   -webkit-font-smoothing: antialiased;
   overflow-x: clip;
   line-height: 1.5;
@@ -391,6 +392,9 @@ button { font: inherit; color: inherit; }
 .site-footer .wrap { max-width: 1180px; padding-top: 52px; padding-bottom: 52px; display: flex; flex-wrap: wrap; gap: 26px; align-items: flex-end; justify-content: space-between; }
 .site-footer__brand img { width: 150px; height: auto; aspect-ratio: 440 / 287; object-fit: cover; margin-bottom: 16px; }
 .site-footer__brand div { font-size: 15px; line-height: 1.6; }
+.site-footer__social { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+.site-footer__social a { display: inline-flex; align-items: center; gap: 8px; color: var(--cream); border: 1.5px solid var(--cream); border-radius: 999px; padding: 8px 16px 8px 12px; font-size: 14px; font-weight: 600; }
+.site-footer__social a:hover { background: var(--cream); color: var(--blue); }
 .site-footer__links { display: flex; flex-wrap: wrap; gap: 22px; font-size: 15px; font-weight: 500; }
 .site-footer__links a { color: var(--line); }
 .site-footer__links a:hover { color: var(--white); }
@@ -409,9 +413,6 @@ button { font: inherit; color: inherit; }
 .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 18px; }
 .form-error { font-size: 15px; font-weight: 600; color: var(--error); margin-top: 18px; }
 .form-ok { font-size: 16px; font-weight: 600; margin-top: 14px; }
-.contact-form { background: var(--cream); border: 1.5px solid var(--ink); border-radius: 20px; padding: 28px; display: flex; flex-direction: column; gap: 15px; min-width: 0; }
-.contact-form input, .contact-form select, .contact-form textarea { background: var(--white); border-radius: 10px; padding: 12px 13px; }
-.contact-form .form-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 130px), 1fr)); gap: 15px; }
 .contact-list { display: flex; flex-direction: column; gap: 13px; font-size: 17px; }
 .contact-list a { border-bottom: 1.5px solid var(--ink); }
 .contact-list strong { font-weight: 700; }
@@ -490,6 +491,20 @@ button { font: inherit; color: inherit; }
   .wizard__nav > div .btn { flex: 1; }
 }
 
+/* Embedded on the home page, inside the yellow contact card */
+@media (min-width: 900px) { .contact-split { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); } }
+.wizard--embed { max-width: none; margin: 0; padding: 0; min-width: 0; }
+.wizard--embed .wizard__card { min-height: 0; padding: clamp(22px, 3.5vw, 34px); }
+.wizard--embed .wizard__title { font-size: clamp(26px, 3.4vw, 34px); }
+.wizard--embed .wizard__sub { font-size: 16px; }
+.wizard--embed .wizard__count { color: var(--ink); }
+.wizard--embed .options { grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr)); margin-top: 22px; }
+.wizard--embed .wizard__fields, .wizard--embed .review { margin-top: 22px; }
+.wizard--embed .form-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 16px; }
+.wizard--embed .wizard__nav { margin-top: 26px; padding-top: 20px; }
+.wizard--embed .wizard__done h3 { font-size: clamp(28px, 4vw, 40px); line-height: 1.05; margin-bottom: 14px; text-wrap: balance; }
+.wizard--embed .wizard__done p { font-size: 17px; }
+
 /* ---------- Intro reveal ---------- */
 #bh-intro { display: none; position: fixed; inset: 0; z-index: 9999; background: var(--blue); align-items: center; justify-content: center; clip-path: circle(150% at 50% 50%); will-change: clip-path; pointer-events: none; }
 html.bh-intro-pending #bh-intro { display: flex; }
@@ -498,6 +513,9 @@ html.bh-intro-pending #bh-intro { display: flex; }
 /* Cream text keeps the deeper brand blue readable. */
 .card--blue, .sticker--blue, .stat--blue, .eyebrow, .wizard__pill { color: var(--cream); }
 .card--blue p, .stat--blue .stat__l { color: var(--cream); }
+/* Light boxes sitting on a blue card keep dark text. */
+.card--blue .step-card, .card--blue .cta-bar { color: var(--ink); }
+.card--blue .step-card p { color: var(--muted); }
 .eyebrow--yellow, .eyebrow--pink { color: var(--ink); }
 .stat--pink { background: var(--pink); }
 .option.is-selected, .chip.is-selected, .wizard__done { color: var(--accent-ink, var(--cream)); }

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="480" viewBox="0 0 480 480">
+  <!-- Page wallpaper: three cartoon dog bones, each drawn differently, a shade off the cream background. Tiles seamlessly.
+       Lumpy lopsided ends, bowed shafts, strokes that overshoot where they close, a second "pen pass" on part of
+       each outline and a little shine mark keep them looking hand-drawn. -->
+  <defs>
+    <!-- chunky, sagging shaft -->
+    <g id="bone-a">
+      <path d="M15 9C13 2.4 4 2.2 3.2 8.8C2.8 12.6 5.4 14.2 7.8 14.8C4 15.8 1.6 19.2 3.4 23C5.6 27.8 14 26.8 15.4 20.8C24 23.8 35 19.6 44.6 21.6C46.2 28.2 56.6 28.6 58 22C58.8 18.2 56 15.6 53 15.2C57.2 14.2 59.8 10.8 58 6.4C55.6 1.2 45.6 2.4 45 9.4C37 6.2 25 10.8 16.8 8.2"/>
+      <path d="M14.6 22.4C12.6 27.2 5.8 26.8 4.4 23.2"/>
+      <path d="M7.4 8.8C7.9 7 9.4 5.8 11.2 6"/>
+    </g>
+    <!-- long and skinny, bowed the other way -->
+    <g id="bone-b">
+      <path d="M13 11.2C12.2 5.6 4.4 5 4 10.6C3.8 13.2 5.6 14.6 7.6 15C5 16 3.4 18.4 4.4 21.2C6 25 12.8 24.4 13.8 19.6C26 22.6 37 16.8 50 18.2C51.4 23.4 59.2 23 59.8 17.4C60.2 14.8 58.2 13.2 56 12.8C58.4 11.8 60 9.2 58.8 6.4C56.8 2.4 49.6 3.2 49.2 8.4C40 10.8 22 9 15 11.8"/>
+      <path d="M50.4 17.2C51 21.6 57.6 22.2 59 17.8"/>
+      <path d="M53 7.2C53.6 5.8 55 5.2 56.4 5.5"/>
+      <path d="M23 16.4C28 16 33 15 37.6 14.4"/>
+    </g>
+    <!-- short, fat and wonky -->
+    <g id="bone-c">
+      <path d="M14 8C13.6 1.8 4.4 0.8 3.4 7.4C2.8 11 5.4 13 7.8 13.8C3.6 14.8 1.4 18.6 3 22.2C5.2 27.4 14.4 26 15 19.6C22 22.6 27 18.2 33.6 19.8C35 26 45 26.4 46.4 20.4C47.2 17.2 44.8 14.6 41.8 14C45.6 12.8 47.8 9.4 46.2 5.8C44 1 35 2 34 8C27 5.4 21 9.6 15.6 6.8"/>
+      <path d="M33.2 7C34.4 2.6 41.6 2 44 5"/>
+      <path d="M37.2 7.2C38 5.6 39.6 4.9 41.2 5.2"/>
+    </g>
+  </defs>
+  <g fill="none" stroke="#E6DED2" stroke-linecap="round" stroke-linejoin="round">
+    <use href="#bone-a" stroke-width="2.2" vector-effect="non-scaling-stroke" transform="translate(52 66) rotate(-22 30 15) scale(1.1)"/>
+    <use href="#bone-b" stroke-width="2" vector-effect="non-scaling-stroke" transform="translate(292 176) rotate(36 30 15) scale(1)"/>
+    <use href="#bone-c" stroke-width="2.4" vector-effect="non-scaling-stroke" transform="translate(126 346) rotate(10 24 15) scale(1.05)"/>
+  </g>
+</svg>

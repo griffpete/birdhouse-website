@@ -151,6 +151,10 @@ button { font: inherit; color: inherit; }
 @media (max-width: 480px) {
   .btn { white-space: normal; }
   .btn-row > .btn { flex: 1 1 auto; }
+  /* Social buttons: an even two-column grid, with an odd last button spanning the row. */
+  .btn-row--social { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .btn-row--social > .btn { padding-left: 12px; padding-right: 12px; }
+  .btn-row--social > .btn:last-child:nth-child(odd) { grid-column: 1 / -1; }
 }
 
 /* ---------- Cards and stickers ---------- */

@@ -55,6 +55,17 @@ The "Follow along" section on the home page has two slots marked `SNAPWIDGET INS
 
 Feeds refresh on SnapWidget's side (every 5 minutes on paid plans, every 15 minutes on free), so nothing on the site changes when Dani posts.
 
+## Google Tag Manager / Analytics
+
+Every page loads Google Tag Manager container `GTM-KVRQJDN4` (snippet at the top of `<head>` plus a `<noscript>` iframe after `<body>`). Tags are managed in tagmanager.google.com, not in this repo. The GA4 Google Tag lives inside that container.
+
+The site pushes two events to the `dataLayer`:
+
+| Event | When | Fields |
+| --- | --- | --- |
+| `generate_lead` | Booking wizard submits successfully (`js/book.js`) | `lead_service`, `lead_source` |
+| `contact_click` | Any `tel:` or `mailto:` link is clicked (`js/site.js`) | `contact_method` (`phone` / `email`), `contact_location` (page path) |
+
 ## Domains
 
 Primary site: `https://www.birdhousedogco.com`.

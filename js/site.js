@@ -89,6 +89,19 @@
     }
   });
 
+  /* ---------- Contact click tracking ----------
+     Phone and email taps go to Google Tag Manager as a contact_click event. */
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="tel:"], a[href^="mailto:"]');
+    if (!a) return;
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'contact_click',
+      contact_method: a.href.indexOf('tel:') === 0 ? 'phone' : 'email',
+      contact_location: location.pathname
+    });
+  });
+
   /* ---------- Mobile nav ---------- */
   var toggle = document.querySelector('.nav__toggle');
   var menu = document.querySelector('.nav__menu');

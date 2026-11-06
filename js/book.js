@@ -334,6 +334,9 @@
     state.sending = true; render();
     window.BH.sendLead(payload).then(function () {
       state.sending = false; state.done = true; render();
+      // Picked up by Google Tag Manager as the booking conversion.
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'generate_lead', lead_service: svc.name, lead_source: payload.leadSource });
     }).catch(function () {
       state.sending = false;
       state.error = 'That didn’t go through. Text or call us at ' + PHONE + ' and we will help you book.';

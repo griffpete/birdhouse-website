@@ -12,7 +12,7 @@
   var heading = embedded ? 'h3' : 'h1';
   function setUrl(url) { if (!embedded) history.replaceState(null, '', url); }
 
-  var PHONE = '(916) 513-5280';
+  var PHONE = '(435) 599-3158';
 
   // Picklist values below match Zoho exactly; change them in Zoho first, then here.
   var SERVICES = {
@@ -130,7 +130,7 @@
       el('div', { class: 'wizard__top' }, [pill, count]),
       el('div', { class: 'wizard__bar' }, [bar]),
       card,
-      embedded ? null : el('p', { class: 'wizard__foot', html: 'Rather talk it through? Text or call us at <a href="tel:9165135280">' + PHONE + '</a>.' })
+      embedded ? null : el('p', { class: 'wizard__foot', html: 'Rather talk it through? Text or call us at <a href="tel:+14355993158">' + PHONE + '</a>.' })
     ]);
     mount.appendChild(shell);
   }

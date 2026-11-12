@@ -47,7 +47,7 @@
       { key: 'allergies', label: 'Allergies', type: 'text', placeholder: 'Food, shampoo, medication… or none' },
       { key: 'vetName', label: 'Vet clinic name', type: 'text' },
       { key: 'vetPhone', label: 'Vet clinic phone', type: 'tel', placeholder: '(435) 555-0123' },
-      { key: 'cpr', label: 'In an emergency, may Dani perform pet CPR on your dog?', type: 'chips', req: true, full: true, options: ['Yes', 'No'], single: true, hint: 'Dani is pet CPR certified. This is only ever used if something serious happens.' }
+      { key: 'cpr', label: 'In an emergency, may Dani perform pet CPR on your dog?', type: 'chips', req: true, full: true, options: ['Yes', 'No'], single: true, hint: 'Dani is certified in Pet Tech CPR and First Aid. We hope it is never needed, but she is ready to act right away if something serious happens.' }
     ] },
     { id: 'contact', title: 'How should we reach you?', sub: 'We will use these details to follow up and confirm your appointment.', fields: [
       { key: 'firstName', label: 'First name', type: 'text', req: true, autocomplete: 'given-name' },

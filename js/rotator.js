@@ -1,5 +1,5 @@
 /* Training photos: the small photo grows into the large slot, the next photo slides in behind it,
-   and the text card switches to the copy and color that go with the new large photo. */
+   and the text card steps to its next copy and color. */
 (function () {
   'use strict';
 
@@ -41,7 +41,7 @@
     var sideSizes = side.querySelector('img').getAttribute('sizes');
     var motion = window.matchMedia('(prefers-reduced-motion: reduce)');
     var stacked = window.matchMedia('(max-width: 760px)');
-    var sideIndex = 1, visible = false, busy = false, timer = 0, started = false;
+    var sideIndex = 1, copyIndex = 0, visible = false, busy = false, timer = 0, started = false;
 
     function picture(index, sizes) {
       var p = photos[index].cloneNode(true);
@@ -128,7 +128,8 @@
       return tween(FLY, draw);
     }
 
-    // Copy i goes with photo i; data-color names the card--* class to use.
+    // The card moves to the next copy with every photo change, looping on its own, so there
+    // can be more photos than copies. data-color names the card--* class to use.
     function showCopy(index) {
       if (!copies[index]) return;
       copies.forEach(function (copy, i) {
@@ -156,7 +157,7 @@
       ]).then(function (ready) {
         var newMain = ready[0], newSide = ready[1], el = ready[2];
         var work = [];
-        showCopy(mainIndex);
+        if (copies.length) { copyIndex = (copyIndex + 1) % copies.length; showCopy(copyIndex); }
 
         // The next small photo slides and fades in. It starts a little zoomed so no gap shows.
         newSide.style.opacity = '';
